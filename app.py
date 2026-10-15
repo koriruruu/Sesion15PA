@@ -4,9 +4,11 @@ import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
+
+# Explicitly import local custom modules so joblib can unpickle the model properly
 import flujo
-import procesamiento
 import modelos
+import preprocesamiento
 
 st.set_page_config(page_title="Modelo de consumo", page_icon="⚡")
 
@@ -29,7 +31,7 @@ st.write(
     f"**{type(pre).__name__}** y un **{type(modelo).__name__}**."
 )
 
-tab1, tab2, tab3 = st.tabs(["1. Atributos", "2. Métodos", "3. Probar el "])
+tab1, tab2, tab3 = st.tabs(["1. Atributos", "2. Métodos", "3. Probar el modelo"])
 
 # ------------------------------------------------------------------
 # 1. ATRIBUTOS: lo que cada objeto sabe (lo que guardó el .joblib)
@@ -38,12 +40,12 @@ with tab1:
     st.subheader(f"Atributos de {type(pre).__name__}")
     st.table(pd.DataFrame({"media": pre.media, "desv": pre.desv}, index=COLUMNAS).round(2))
 
-    st.subheader(f"Atributos de {type().__name__}")
-    st.write(f"`tasa` = {modedlo.tasa}  ·  `iteraciones` = {modelo.iteraciones}  ·  `b` = {modelo.b:.2f}")
-    st.table(pd.DataFrame({"w (peso)": .w}, index=COLUMNAS).round(2))
+    st.subheader(f"Atributos de {type(modelo).__name__}")
+    st.write(f"`tasa` = {modelo.tasa}  ·  `iteraciones` = {modelo.iteraciones}  ·  `b` = {modelo.b:.2f}")
+    st.table(pd.DataFrame({"w (peso)": modelo.w}, index=COLUMNAS).round(2))
 
-    st.write(f"`historial`: lista con {len(.historial)} valores del costo durante el entrenamiento")
-    st.line_chart(pd.DataFrame({"costo (MSE)": .historial}))
+    st.write(f"`historial`: lista con {len(modelo.historial)} valores del costo durante el entrenamiento")
+    st.line_chart(pd.DataFrame({"costo (MSE)": modelo.historial}))
 
     st.info("Prueba: ¿qué variable tiene el peso más grande? ¿Qué dice eso del consumo del edificio?")
 
