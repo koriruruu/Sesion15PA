@@ -1,13 +1,10 @@
 import inspect
-
 import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
-
-# Explicitly import local custom modules so joblib can unpickle the model properly
 import flujo
-import modelo
+import modelos
 import preprocesamiento
 
 st.set_page_config(page_title="Modelo de consumo", page_icon="⚡")
