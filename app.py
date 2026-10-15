@@ -39,7 +39,7 @@ with tab1:
     st.table(pd.DataFrame({"media": pre.media, "desv": pre.desv}, index=COLUMNAS).round(2))
 
     st.subheader(f"Atributos de {type().__name__}")
-    st.write(f"`tasa` = {.tasa}  ·  `iteraciones` = {.iteraciones}  ·  `b` = {.b:.2f}")
+    st.write(f"`tasa` = {modedlo.tasa}  ·  `iteraciones` = {modelo.iteraciones}  ·  `b` = {modelo.b:.2f}")
     st.table(pd.DataFrame({"w (peso)": .w}, index=COLUMNAS).round(2))
 
     st.write(f"`historial`: lista con {len(.historial)} valores del costo durante el entrenamiento")
