@@ -20,7 +20,7 @@ def cargar_modelo():
 
 flujo = cargar_modelo()
 pre = flujo.preprocesador
-modelo = flujo.modelos
+modelo = flujo.modelo
 COLUMNAS = ["temperatura", "ocupacion", "humedad"]
 
 st.title("⚡ Modelo de consumo energético")
