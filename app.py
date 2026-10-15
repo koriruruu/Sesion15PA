@@ -3,8 +3,11 @@ import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
-import flujo
+import sys
 import modelos
+
+sys.modules['modelo'] = modelos
+import flujo
 import preprocesamiento
 
 st.set_page_config(page_title="Modelo de consumo", page_icon="⚡")
